@@ -28,7 +28,7 @@ public class SiteContentHandlerTests {
 			ArrayList<JobAd> result;
 			result = SiteContentHandler.handleSite(readFile("TestSite/testContentHandler.html"), "testTwo");
 			assertTrue(result.get(0).getTitle().equals("job one"));
-			assertTrue(result.get(1).getTitle().equals("something about job one"));
+			assertTrue(result.get(0).getTitle().equals("something about job one"));
 			
 			assertTrue(result.get(1).getTitle().equals("job two"));
 			assertTrue(result.get(1).getTitle().equals("for java developers"));
