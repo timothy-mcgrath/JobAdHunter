@@ -19,8 +19,8 @@ public class TestPluginLoad implements SiteHandler {
 		return "test";
 	}
 
-//	@Capabilities
-//	public String[] caps() {
-//		return new String[] {"test"};
-//	}
+	@Override
+	public String getURLofNextPage() {
+		return null;
+	}
 }

@@ -23,7 +23,7 @@ public class SiteContentHandler {
 	private static SiteHandler loadPlugin(String url)
 	{
 		try {
-			ArrayList<SiteHandler> list = pluginManager.loadPlugins(SiteHandler.class, "Plugin/");
+			ArrayList<SiteHandler> list = PluginManager.loadPlugins(SiteHandler.class, "Plugin/");
 			for(int i = 0 ; i < list.size();i++)
 			{
 				if(list.get(i).handlesSite() == url)

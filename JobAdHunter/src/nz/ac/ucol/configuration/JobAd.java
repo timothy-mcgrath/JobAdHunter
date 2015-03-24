@@ -6,6 +6,8 @@ public class JobAd {
 	private String shortDescription;
 	private String FullDescription;
 	private String source;
+	private boolean requresAdditonalInformation;
+	private String urlOFAditionalInfo;
 	
 	/**
 	 * @return the title
@@ -61,5 +63,33 @@ public class JobAd {
 	 */
 	public void setSource(String source) {
 		this.source = source;
+	}
+
+	/**
+	 * @return the requresAdditonalInformation
+	 */
+	public boolean isRequresAdditonalInformation() {
+		return requresAdditonalInformation;
+	}
+
+	/**
+	 * @param requresAdditonalInformation the requresAdditonalInformation to set
+	 */
+	public void setRequresAdditonalInformation(boolean requresAdditonalInformation) {
+		this.requresAdditonalInformation = requresAdditonalInformation;
+	}
+
+	/**
+	 * @return the urlOFAditionalInfo
+	 */
+	public String getUrlOFAditionalInfo() {
+		return urlOFAditionalInfo;
+	}
+
+	/**
+	 * @param urlOFAditionalInfo the urlOFAditionalInfo to set
+	 */
+	public void setUrlOFAditionalInfo(String urlOFAditionalInfo) {
+		this.urlOFAditionalInfo = urlOFAditionalInfo;
 	}
 }

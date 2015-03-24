@@ -70,5 +70,6 @@
 	<classpathentry kind="lib" path="C:/Users/Tim McGrath/Documents/ExternalJars/JPF/jpf.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Tim McGrath/Documents/ExternalJars/JPF/jpf-boot.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Tim McGrath/Documents/ExternalJars/JPF/jpf-tools.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tim McGrath/Documents/ExternalJars/BBJPF.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

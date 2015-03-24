@@ -34,4 +34,9 @@ public class TestPluginHandlingContent implements SiteHandler {
 	public String handlesSite() {
 		return "testTwo";
 	}
+
+	@Override
+	public String getURLofNextPage() {
+		return null;
+	}
 }
