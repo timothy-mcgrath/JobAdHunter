@@ -11,7 +11,7 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
 	
-public class pluginManager {
+public class PluginManager {
 
 	/**
 	 * loads plug ins from specified folder that match the provided class 
