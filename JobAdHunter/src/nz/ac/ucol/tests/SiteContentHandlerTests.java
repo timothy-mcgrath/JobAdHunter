@@ -28,10 +28,10 @@ public class SiteContentHandlerTests {
 			ArrayList<JobAd> result;
 			result = SiteContentHandler.handleSite(readFile("TestSite/testContentHandler.html"), "testTwo");
 			assertTrue(result.get(0).getTitle().equals("job one"));
-			assertTrue(result.get(0).getTitle().equals("something about job one"));
+			assertTrue(result.get(0).getFullDescription().equals("something about job one"));
 			
 			assertTrue(result.get(1).getTitle().equals("job two"));
-			assertTrue(result.get(1).getTitle().equals("for java developers"));
+			assertTrue(result.get(1).getFullDescription().equals("for java developers"));
 			
 			assertTrue(result.size() == 2);
 		} catch (IOException e) {
@@ -53,7 +53,7 @@ public class SiteContentHandlerTests {
 	    
 	    reader.close();
 
-	    return stringBuilder.toString();
+	    return stringBuilder.toString().replaceAll("(\\r|\\n|\\t)", "");
 	}
 
 }

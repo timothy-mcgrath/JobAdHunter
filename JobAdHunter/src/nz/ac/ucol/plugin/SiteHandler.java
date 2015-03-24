@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 import nz.ac.ucol.configuration.JobAd;
 
-import org.java.plugin.Plugin;
+//import org.java.plugin.Plugin;
+import net.xeoh.plugins.base.Plugin;
 
-public abstract class siteHandler extends Plugin {
+public interface SiteHandler extends Plugin {
 
 	/**
 	 * Takes the source code of a web page and extracts a list of JobAds from it 
@@ -21,14 +22,5 @@ public abstract class siteHandler extends Plugin {
 	 */
 	public abstract String handlesSite();
 	
-	
-	@Override
-	protected void doStart() throws Exception {
-		
-	}
 
-	@Override
-	protected void doStop() throws Exception {
-		
-	}
 }
