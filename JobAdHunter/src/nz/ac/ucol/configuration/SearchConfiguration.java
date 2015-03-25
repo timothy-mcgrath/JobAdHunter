@@ -21,6 +21,11 @@ public class SearchConfiguration {
 		
 	}
 	
+	public boolean toFile(String fileName)
+	{
+		return true;
+	}
+	
 	/**
 	 * rate this job ad based on configuration settings 
 	 * @param jobAd job ad to rate
@@ -37,7 +42,27 @@ public class SearchConfiguration {
 	 * @param jobAdslist of JobAds To process
 	 * @return jobAds that are of interest or require additional information
 	 */
-	public void processJobAds(ArrayList<JobAd> jobAds)
+	public ArrayList<JobAd> processJobAds(ArrayList<JobAd> jobAds)
+	{
+		return (ArrayList<JobAd>)jobAds.clone();
+	}
+	
+	public void addWebSite(String url)
+	{
+		
+	}
+	
+	public void addRankingCondition(int weight,String Expresion)
+	{
+		
+	}
+	
+	public void addJobAdCondition(String type,String area,String expression)
+	{
+		
+	}
+	
+	public void setOutputOption(String option, String target)
 	{
 		
 	}
