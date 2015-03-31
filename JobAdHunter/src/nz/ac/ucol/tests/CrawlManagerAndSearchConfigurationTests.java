@@ -53,7 +53,26 @@ public class CrawlManagerAndSearchConfigurationTests {
 		assertTrue(results.size() == 1);
 		assertTrue(results.get(0).getTitle().equals("C# developer"));
 		assertTrue(results.get(0).getTitle().equals("in palmerston north /n no comercial expreiance required"));
-	
+		
+		searchConfig = new SearchConfiguration();
+		searchConfig.addJobAdCondition(Options.musthave, Options.anyWhere, "palmerston north");
+		
+		results = searchConfig.processJobAds(jobAds);
+		assertTrue(results.size() == 2);
+		
+		jobAd = new JobAd();
+		jobAd.setTitle("gardner");
+		jobAd.setFullDescription("must love working out doors /n will be based in palemrston north");
+		
+		jobAds.add(jobAd);
+		
+		results = searchConfig.processJobAds(jobAds);
+		assertTrue(results.size() == 3);
+		
+		searchConfig.addJobAdCondition(Options.musthave, Options.anyWhere, "[d|D]evelper/b");
+		
+		results = searchConfig.processJobAds(jobAds);
+		assertTrue(results.size() == 2);
 	}
 	
 	@Test
@@ -67,10 +86,10 @@ public class CrawlManagerAndSearchConfigurationTests {
 		searchConfig.addWebSite(fileName);
 		searchConfig.addJobAdCondition("mustHave","title", "\btwo");
 		
-		file = new File("TestSite/testReort");
-		fileName = file.toURI().toString();
+		File reportFile = new File("TestSite/testReort");
+		String reportFileName = reportFile.toURI().toString();
 		
-		searchConfig.setOutputOption(Options.notepadFile,fileName);
+		searchConfig.setOutputOption(Options.notepadFile,reportFileName);
 		CrawlManager.performJobAdCrawl(searchConfig);
 		
 		try {

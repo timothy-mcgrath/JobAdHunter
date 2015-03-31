@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import nz.ac.ucol.configuration.JobAd;
 import nz.ac.ucol.plugin.SiteHandler;
+import nz.ac.ucol.pluginManager.PluginManager;
 
 
 public class SiteContentHandler {
