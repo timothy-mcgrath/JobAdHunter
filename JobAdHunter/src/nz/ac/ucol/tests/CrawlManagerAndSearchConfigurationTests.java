@@ -73,6 +73,17 @@ public class CrawlManagerAndSearchConfigurationTests {
 		
 		results = searchConfig.processJobAds(jobAds);
 		assertTrue(results.size() == 2);
+		
+		searchConfig = new SearchConfiguration();
+		
+		searchConfig.addRankingCondition(10, "Java");
+		searchConfig.addRankingCondition(-10, "out doors");
+		
+		results = searchConfig.processJobAds(jobAds);
+		
+		assertTrue(results.get(0).getTitle().equals("Java Developer"));
+		assertTrue(results.get(1).getTitle().equals("C# developer"));
+		assertTrue(results.get(2).getTitle().equals("gardner"));
 	}
 	
 	@Test

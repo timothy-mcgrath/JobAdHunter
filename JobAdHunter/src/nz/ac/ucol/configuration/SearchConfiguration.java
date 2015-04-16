@@ -31,9 +31,9 @@ public class SearchConfiguration {
 	 * @param jobAd job ad to rate
 	 * @return numerical value of job ad
 	 */
-	public int rate(JobAd jobAd)
+	public ArrayList<JobAd> rateJobAds(ArrayList<JobAd> jobAds)
 	{
-		return 0;
+		return (ArrayList<JobAd>)jobAds.clone();
 	}
 	
 	/**
