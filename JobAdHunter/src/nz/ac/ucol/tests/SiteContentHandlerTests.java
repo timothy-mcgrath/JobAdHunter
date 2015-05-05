@@ -17,7 +17,7 @@ public class SiteContentHandlerTests {
 
 	@Test
 	public void test() {
-		ArrayList<JobAd> result = SiteContentHandler.handleSite("dosent matter for first one", "test");
+		ArrayList<JobAd> result = SiteContentHandler.handleSiteSearchResults("dosent matter for first one", "test");
 		assertTrue(result.get(0).getTitle().equals("hello"));
 	}
 	
@@ -26,7 +26,7 @@ public class SiteContentHandlerTests {
 	{
 		try {
 			ArrayList<JobAd> result;
-			result = SiteContentHandler.handleSite(readFile("TestSite/testContentHandler.html"), "testTwo");
+			result = SiteContentHandler.handleSiteSearchResults(readFile("TestSite/testContentHandler.html"), "testTwo");
 			assertTrue(result.get(0).getTitle().equals("job one"));
 			assertTrue(result.get(0).getFullDescription().equals("something about job one"));
 			

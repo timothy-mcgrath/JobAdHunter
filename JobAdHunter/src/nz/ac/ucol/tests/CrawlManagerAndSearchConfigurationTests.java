@@ -6,7 +6,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import nz.ac.ucol.configuration.JobAd;
 import nz.ac.ucol.configuration.Options;
@@ -39,45 +42,45 @@ public class CrawlManagerAndSearchConfigurationTests {
 		assertTrue(results.size() == 2);
 		assertTrue(results.get(0).getTitle().equals("Java Developer"));
 		
-		searchConfig.addJobAdCondition(Options.musthave, Options.anyWhere, "Java");
+		searchConfig.addJobAdCondition(Options.musthave, Options.anyWhere, ".*Java.*");
 		
 		results = searchConfig.processJobAds(jobAds);
 		assertTrue(results.size() == 1);
 		assertTrue(results.get(0).getTitle().equals("Java Developer"));
-		assertTrue(results.get(0).getTitle().equals("4 years comercial experiance /n loves all thing tech /n in palmerston north"));
+		assertTrue(results.get(0).getFullDescription().equals("4 years comercial experiance /n loves all thing tech /n in palmerston north"));
 	
 		searchConfig = new SearchConfiguration();
-		searchConfig.addJobAdCondition(Options.musthave, Options.anyWhere, "C# developer");
+		searchConfig.addJobAdCondition(Options.musthave, Options.anyWhere, ".*C# developer.*");
 		
 		results = searchConfig.processJobAds(jobAds);
 		assertTrue(results.size() == 1);
 		assertTrue(results.get(0).getTitle().equals("C# developer"));
-		assertTrue(results.get(0).getTitle().equals("in palmerston north /n no comercial expreiance required"));
+		assertTrue(results.get(0).getFullDescription().equals("in palmerston north /n no comercial expreiance required"));
 		
 		searchConfig = new SearchConfiguration();
-		searchConfig.addJobAdCondition(Options.musthave, Options.anyWhere, "palmerston north");
+		searchConfig.addJobAdCondition(Options.musthave, Options.anyWhere, ".*palmerston north.*");
 		
 		results = searchConfig.processJobAds(jobAds);
 		assertTrue(results.size() == 2);
 		
 		jobAd = new JobAd();
 		jobAd.setTitle("gardner");
-		jobAd.setFullDescription("must love working out doors /n will be based in palemrston north");
+		jobAd.setFullDescription("must love working out doors /n will be based in palmerston north");
 		
 		jobAds.add(jobAd);
 		
 		results = searchConfig.processJobAds(jobAds);
 		assertTrue(results.size() == 3);
 		
-		searchConfig.addJobAdCondition(Options.musthave, Options.anyWhere, "[d|D]evelper/b");
+		searchConfig.addJobAdCondition(Options.musthave, Options.anyWhere, ".*[d|D]eveloper.*");
 		
 		results = searchConfig.processJobAds(jobAds);
 		assertTrue(results.size() == 2);
 		
 		searchConfig = new SearchConfiguration();
 		
-		searchConfig.addRankingCondition(10, "Java");
-		searchConfig.addRankingCondition(-10, "out doors");
+		searchConfig.addRankingCondition(10, ".*Java.*");
+		searchConfig.addRankingCondition(-10, ".*out doors.*");
 		
 		results = searchConfig.processJobAds(jobAds);
 		
@@ -95,21 +98,21 @@ public class CrawlManagerAndSearchConfigurationTests {
 		fileName = file.toURI().toString();
 		
 		searchConfig.addWebSite(fileName);
-		searchConfig.addJobAdCondition("mustHave","title", "\btwo");
+		searchConfig.addJobAdCondition(Options.musthave,Options.title, ".*two.*");
 		
-		File reportFile = new File("TestSite/testReort");
-		String reportFileName = reportFile.toURI().toString();
-		
-		searchConfig.setOutputOption(Options.notepadFile,reportFileName);
+		searchConfig.setOutPutOption(Options.notepadFile,"TestSite/testReport");
 		CrawlManager.performJobAdCrawl(searchConfig);
 		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd");
+		Date date = new Date();
+		
 		try {
-			String result = readFile(fileName);
+			String result = readFile("TestSite/testReport" + dateFormat.format(date) + ".txt");
 			assertTrue(result.contains("job two"));
 			assertFalse(result.contains("job one"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			assertTrue(false);
 		}
 	}
 

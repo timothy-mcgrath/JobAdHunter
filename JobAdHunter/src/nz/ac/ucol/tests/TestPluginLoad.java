@@ -8,19 +8,23 @@ import nz.ac.ucol.plugin.SiteHandler;
 
 public class TestPluginLoad implements SiteHandler {
 
-	public ArrayList<JobAd> processSite(String site) {
+	public String handlesSite() {
+		return "test";
+	}
+
+	public String getURLofNextPage() {
+		return null;
+	}
+
+	public ArrayList<JobAd> processSiteSearchResults(String site) {
 		ArrayList<JobAd> result = new ArrayList<>();
 		result.add(new JobAd());
 		result.get(0).setTitle("hello");
 		return result;
 	}
 
-	public String handlesSite() {
-		return "test";
-	}
-
-	@Override
-	public String getURLofNextPage() {
+	public JobAd processSiteJobListing(String site, JobAd jobAdToAddInfoToo) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }
