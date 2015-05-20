@@ -20,6 +20,7 @@ import nz.ac.ucol.configuration.Options;
 import nz.ac.ucol.configuration.SearchConfiguration;
 import nz.ac.ucol.crawler.CrawlManager;
 import nz.ac.ucol.gui.View;
+import nz.ac.ucol.utility.Utility;
 
 import org.junit.Test;
 //import org.loadui.testfx.GuiTest;
@@ -28,17 +29,13 @@ import org.loadui.testfx.*;
 import org.hamcrest.*;
 import org.loadui.testfx.Assertions;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 import static org.junit.Assert.*;
 
 public class GUITests extends  GuiTest {
 	
-	@Test
-	public void testTeck(){
-		final Button button = find( "#createjobCrawl" );
-	    click(button);
-	    Assertions.assertNodeExists("it worked");
-	}
-
 	@Override
 	protected Parent getRootNode() {
 		// TODO Auto-generated method stub
@@ -56,7 +53,7 @@ public class GUITests extends  GuiTest {
 		// transition to creation screen
 		Button btn = find("#createjobCrawlBTN");
 		click(btn);
-		Assertions.assertNodeExists("#jobCrawlCreationpagePNL");
+		Assertions.assertNodeExists("#jobCrawlCreationPagePNL");
 		
 		// set name
 		TextField tf = find("#nameFeildTF");
@@ -150,6 +147,25 @@ public class GUITests extends  GuiTest {
 		btn = find("#createCrawlBTN");
 		click(btn);
 		
+		//run new job crawl
+		btn = find("#runJobCrawlBTN");
+		click(btn);
+		
+		btn = find("#runtestWebCrawl");
+		click(btn);
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd");
+		Date date = new Date();
+		
+		try {
+			String result = Utility.readFile("TestSite/testReport" + dateFormat.format(date) + ".txt");
+			assertTrue(result.contains("java developer"));
+			assertTrue(result.contains(".net developer"));
+			assertFalse(result.contains("house keeper"));
+		} catch (IOException e) {
+			e.printStackTrace();
+			assertTrue(false);
+		}
 		
 	}
 
