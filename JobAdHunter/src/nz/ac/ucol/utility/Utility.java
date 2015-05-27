@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Utility {
 
-	public String readFile( String file ) throws IOException {
+	public static String readFile( String file ) throws IOException {
 	    BufferedReader reader = new BufferedReader( new FileReader (file));
 	    String         line = null;
 	    StringBuilder  stringBuilder = new StringBuilder();

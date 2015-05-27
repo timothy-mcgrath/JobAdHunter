@@ -15,6 +15,7 @@ import nz.ac.ucol.configuration.JobAd;
 import nz.ac.ucol.configuration.Options;
 import nz.ac.ucol.configuration.SearchConfiguration;
 import nz.ac.ucol.crawler.CrawlManager;
+import nz.ac.ucol.utility.Utility;
 
 import org.junit.Test;
 
@@ -107,28 +108,12 @@ public class CrawlManagerAndSearchConfigurationTests {
 		Date date = new Date();
 		
 		try {
-			String result = readFile("TestSite/testReport" + dateFormat.format(date) + ".txt");
+			String result = Utility.readFile("TestSite/testReport" + dateFormat.format(date) + ".txt");
 			assertTrue(result.contains("job two"));
 			assertFalse(result.contains("job one"));
 		} catch (IOException e) {
 			e.printStackTrace();
 			assertTrue(false);
 		}
-	}
-
-	private String readFile( String file ) throws IOException {
-	    BufferedReader reader = new BufferedReader( new FileReader (file));
-	    String         line = null;
-	    StringBuilder  stringBuilder = new StringBuilder();
-	    String         ls = System.getProperty("line.separator");
-
-	    while( ( line = reader.readLine() ) != null ) {
-	        stringBuilder.append( line );
-	        stringBuilder.append( ls );
-	    }
-	    
-	    reader.close();
-
-	    return stringBuilder.toString().replaceAll("(\\r|\\n|\\t)", "");
 	}
 }

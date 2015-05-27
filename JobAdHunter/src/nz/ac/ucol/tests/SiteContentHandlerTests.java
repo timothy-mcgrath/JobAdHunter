@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import nz.ac.ucol.configuration.JobAd;
 import nz.ac.ucol.crawler.SiteContentHandler;
+import nz.ac.ucol.utility.Utility;
 
 import org.junit.Test;
 
@@ -26,7 +27,7 @@ public class SiteContentHandlerTests {
 	{
 		try {
 			ArrayList<JobAd> result;
-			result = SiteContentHandler.handleSiteSearchResults(readFile("TestSite/testContentHandler.html"), "testTwo");
+			result = SiteContentHandler.handleSiteSearchResults(Utility.readFile("TestSite/testContentHandler.html"), "testTwo");
 			assertTrue(result.get(0).getTitle().equals("job one"));
 			assertTrue(result.get(0).getFullDescription().equals("something about job one"));
 			
@@ -37,23 +38,5 @@ public class SiteContentHandlerTests {
 		} catch (IOException e) {
 			assertTrue(false);
 		}
-	}
-	
-	
-	private String readFile( String file ) throws IOException {
-	    BufferedReader reader = new BufferedReader( new FileReader (file));
-	    String         line = null;
-	    StringBuilder  stringBuilder = new StringBuilder();
-	    String         ls = System.getProperty("line.separator");
-
-	    while( ( line = reader.readLine() ) != null ) {
-	        stringBuilder.append( line );
-	        stringBuilder.append( ls );
-	    }
-	    
-	    reader.close();
-
-	    return stringBuilder.toString().replaceAll("(\\r|\\n|\\t)", "");
-	}
-
+	}	
 }
