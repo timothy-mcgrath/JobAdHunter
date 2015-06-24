@@ -9,9 +9,6 @@ import nz.ac.ucol.crawler.WebCrawler;
 
 import org.junit.Test;
 
-import com.crawljax.core.configuration.CrawljaxConfiguration;
-import com.crawljax.core.configuration.CrawljaxConfiguration.CrawljaxConfigurationBuilder;
-
 public class WebCrawlerTests {
 
 	// test loading standard page without scripts
@@ -26,7 +23,7 @@ public class WebCrawlerTests {
 		assertTrue(result.contains("hello"));
 	}
 	
-	// test handling of javasccript on loaded page 
+	// test handling of java script on loaded page 
 	@Test
 	public void testJavascript()
 	{
