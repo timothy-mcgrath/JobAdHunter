@@ -1,8 +1,7 @@
 package nz.ac.ucol.configuration;
 
 public interface Options {
-	public final String notepadFile = "NOTEPADFILE";
-	public final String email = "EMAIL";
+	// for use as parameters
 	
 	public final String musthave = "MUSTHAVE";
 	public final String mustNotHave = "MUSTNOTHAVE";

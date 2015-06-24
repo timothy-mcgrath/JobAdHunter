@@ -10,6 +10,19 @@ public class JobAd {
 	private String urlOFAditionalInfo;
 	
 	/**
+	 * create a JobAd object with null values
+	 */
+	public JobAd()
+	{
+		this.title = null;
+		this.shortDescription = null;
+		this.FullDescription = null;
+		this.source = null;
+		this.requresAdditonalInformation = false;
+		this.urlOFAditionalInfo = null;
+	}
+	
+	/**
 	 * @return the title
 	 */
 	public String getTitle() {
@@ -68,7 +81,7 @@ public class JobAd {
 	/**
 	 * @return the requresAdditonalInformation
 	 */
-	public boolean isRequresAdditonalInformation() {
+	public boolean requresAdditonalInformation() {
 		return requresAdditonalInformation;
 	}
 
@@ -91,5 +104,14 @@ public class JobAd {
 	 */
 	public void setUrlOFAditionalInfo(String urlOFAditionalInfo) {
 		this.urlOFAditionalInfo = urlOFAditionalInfo;
+	}
+	
+	/**
+	 * combines all sections of this job ad and returns them as a single string
+	 * @return combined sections
+	 */
+	public String getAllSections()
+	{
+		return this.title + " " + this.shortDescription + " " + this.FullDescription;
 	}
 }
