@@ -1,4 +1,4 @@
-package nz.ac.ucol.tests;
+package pluginImpl;
 
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ import nz.ac.ucol.plugin.SiteHandler;
 public class TestPluginMulti implements SiteHandler {
 
 	@Override
-	public ArrayList<JobAd> processSiteSearchResults(String site) {
+	public ArrayList<JobAd> processSiteSearchResults(String site,String url) {
 		ArrayList<JobAd> jobs = new ArrayList<>();
 		
 		site = site.split("(?i)<ul>")[1];
@@ -24,7 +24,7 @@ public class TestPluginMulti implements SiteHandler {
 			job.setTitle(jobparts[0]);
 			job.setUrlOFAditionalInfo(jobparts[1]);
 			job.setShortDescription(jobparts[2]);
-			job.setSource(site);
+			job.setSource(url);
 			jobs.add(job);
 		}
 		return jobs;
@@ -49,8 +49,8 @@ public class TestPluginMulti implements SiteHandler {
 	}
 
 	@Override
-	public String getURLofNextPage() {
-		return "testSeperatePagesTwo.html";
+	public nextLink getURLofNextPage() {
+		return new nextLink("A", "next");
 	}
 
 }

@@ -1,21 +1,14 @@
-package nz.ac.ucol.tests;
+package pluginImpl;
 
 import java.util.ArrayList;
 
 import nz.ac.ucol.configuration.JobAd;
 import nz.ac.ucol.plugin.SiteHandler;
 
-public class TestPluginHandlingContent implements SiteHandler {
+public class TestPluginHerbo implements SiteHandler{
 
-	public String handlesSite() {
-		return ".*testTwo.*|.*testContentHandler.*";
-	}
-
-	public String getURLofNextPage() {
-		return null;
-	}
-
-	public ArrayList<JobAd> processSiteSearchResults(String site) {
+	@Override
+	public ArrayList<JobAd> processSiteSearchResults(String site,String url) {
 		ArrayList<JobAd> jobs = new ArrayList<>();
 		
 		site = site.split("(?i)<ul>")[1];
@@ -32,15 +25,36 @@ public class TestPluginHandlingContent implements SiteHandler {
 			}
 			JobAd job = new JobAd();
 			job.setTitle(jobparts[0]);
-			job.setFullDescription(jobparts[1]);
-			job.setRequresAdditonalInformation(false);
+			
+			String moreLink = jobparts[1];
+			moreLink = moreLink.split("\"")[1];
+			job.setSource(url);
+			job.setUrlOFAditionalInfo(url.substring(0, url.lastIndexOf("/")) + moreLink);
+			
+			job.setShortDescription(jobparts[2]);
+			job.setRequresAdditonalInformation(true);
 			jobs.add(job);
 		}
 		return jobs;
 	}
 
+	@Override
 	public JobAd processSiteJobListing(String site, JobAd jobAdToAddInfoToo) {
-		// TODO Auto-generated method stub
-		return null;
+		jobAdToAddInfoToo.setFullDescription(site);
+		return jobAdToAddInfoToo;
 	}
+
+	@Override
+	public String handlesSite() {
+		return ".*herobo.*";
+	}
+
+	@Override
+	public nextLink getURLofNextPage() {
+		// TODO Auto-generated method stub
+		return new nextLink("a", "next");
+	}
+	
+	
+
 }

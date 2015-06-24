@@ -1,8 +1,6 @@
-package nz.ac.ucol.tests;
+package pluginImpl;
 
 import java.util.ArrayList;
-
-import net.xeoh.plugins.base.annotations.Capabilities;
 import nz.ac.ucol.configuration.JobAd;
 import nz.ac.ucol.plugin.SiteHandler;
 
@@ -12,14 +10,15 @@ public class TestPluginLoad implements SiteHandler {
 		return "test";
 	}
 
-	public String getURLofNextPage() {
+	public nextLink getURLofNextPage() {
 		return null;
 	}
 
-	public ArrayList<JobAd> processSiteSearchResults(String site) {
+	public ArrayList<JobAd> processSiteSearchResults(String site,String url) {
 		ArrayList<JobAd> result = new ArrayList<>();
 		result.add(new JobAd());
 		result.get(0).setTitle("hello");
+		result.get(0).setSource(url);
 		return result;
 	}
 
