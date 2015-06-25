@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import nz.ac.ucol.configuration.Configuration;
 import nz.ac.ucol.configuration.Options;
 import nz.ac.ucol.configuration.PluginNotFoundException;
 import nz.ac.ucol.configuration.SearchConfiguration;
@@ -34,6 +35,7 @@ public class View extends Application {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		Configuration.findLocatAbsoultepluginpath();
 		if(args.length == 1)
 		{
 			// run specified searchConfiguration 

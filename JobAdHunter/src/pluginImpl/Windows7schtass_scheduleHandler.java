@@ -85,7 +85,8 @@ public class Windows7schtass_scheduleHandler implements ScheduleHandler
 			outPut += "jobAdHunter.jar";
 		}
 		
-		String bashContents = "start javaw -jar \"" + outPut.substring(1) + "\" \"" + "Scripts/" + sc.getName() + "\"";
+		File scLocation = new File("jobSearches/" + sc.getName());
+		String bashContents = "start javaw -jar \"" + outPut.substring(1) + "\" \"" + scLocation.getAbsolutePath() + "\"";
 		String fileName = "Scripts/" + sc.getName() +".bat";
 		
 		try 

@@ -33,7 +33,7 @@ public class ScheduleTests {
 		
 		searchConfig.setOutPutOption(OutPuter.txtFile,"TestSite/testReportTwo");
 		
-		String fileName = "TestSite/testGUI";
+		String fileName = "jobSearches/" + searchConfig.getName();
 		searchConfig.toFile(fileName);
 		
 		// run stored search configuration
@@ -59,7 +59,7 @@ public class ScheduleTests {
 	{
 		SearchConfiguration sc = null;
 		try {
-			 sc = new SearchConfiguration("TestSite/testGUI");
+			 sc = new SearchConfiguration("TestSite/anotherTest");
 		} catch (Exception e) {
 			assertTrue(false);
 		}
@@ -71,6 +71,8 @@ public class ScheduleTests {
 		sc.setTimeofNextCrawl(date);
 		sc.setOutPutOption(OutPuter.txtFile,"TestSite/tesingTheSchedulerplugin");
 		Scheduler.schedualCrawl(sc);
+		String fileName = "jobSearches/" + sc.getName();
+		sc.toFile(fileName);
 		
 		try {
 			Thread.sleep(130000);
